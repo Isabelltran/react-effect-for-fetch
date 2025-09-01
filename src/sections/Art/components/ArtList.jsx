@@ -1,10 +1,10 @@
 import ArtListItem from "./ArtListItem"
 
-function ArtList() {
+function ArtList({art, url}) {
 
     return (
         <div className = "scroll-container">
-            <ArtListItem />
+            <ArtListItem art = {art} url = {url} />
         </div>
         
     )

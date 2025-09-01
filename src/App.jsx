@@ -1,5 +1,6 @@
 import ArtsSection from './sections/Art'
 import UsersSection from './sections/Users'
+import AdviceSection from './sections/Advice'
 import './App.css'
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
     <div className="main-layout">
       <ArtsSection />
       <UsersSection />
-      {/* <AdviceSection /> */}
+      <AdviceSection />
     </div>
   )
 }
