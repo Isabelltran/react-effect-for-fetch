@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import FavouriteSlipsList from "./components/FavouriteSlipsList";
+import AdviceSlip from "./components/AdviceSlip";
 
 function AdviceSection() {
   const url = "https://api.adviceslip.com/advice";
@@ -7,8 +9,8 @@ function AdviceSection() {
 
     
     const fetchData = async () => {
-        const reponse = await fetch(url);
-        const jsonData = await reponse.json();
+        const response = await fetch(url);
+        const jsonData = await response.json();
         setRandom(jsonData);
     };
     useEffect(() => {
@@ -25,20 +27,8 @@ function AdviceSection() {
   return (
     <section>
       <h2>Advice Section</h2>
-      <section className="adivce-slip">
-        <h3>Some Advice</h3>
-        <p>{random && random.slip ? random.slip.advice : "Loading..."}</p>
-        <button onClick={fetchData}>Get More Advice</button>
-        <button onClick={handleAddFavourites}>Save to Favourties</button>
-      </section>
-      <section className="favourtite-slips-list">
-        <h3>Favourite Advice Slips</h3>
-        <ul>
-          {favourites.map(slip => (
-            <li key={slip.id}>{slip.advice}</li>
-          ))}
-        </ul>
-      </section>
+      <AdviceSlip random={random} fetchData={fetchData} handleAddFavourites={handleAddFavourites} />
+      <FavouriteSlipsList favourites={favourites} />
     </section>
   )
 }
